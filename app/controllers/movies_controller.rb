@@ -10,6 +10,9 @@ class MoviesController < ApplicationController
   	if params[:sort_by_title] == 'true'
   		@title_header = 'hilite'
   		@movies = Movie.find(:all, :order => 'title')
+  	elsif params[:sort_by_release_date] == 'true'
+  		@release_date_header = 'hilite'
+  		@movies = Movie.find(:all, :order => 'release_date')
   	else
     	@movies = Movie.all
     end
