@@ -19,6 +19,13 @@ class MoviesController < ApplicationController
     
     @all_ratings = Movie.all_ratings
     
+    if params[:commit] == 'Refresh'
+    	@selected_ratings = params[:ratings]
+    	@movies = Movie.find_all_by_rating(@selected_ratings.keys)
+    else
+    	@selected_ratings = @all_ratings
+    end
+    
   end
 
   def new
